@@ -45,3 +45,12 @@ for k in k_values:
   y_pred=knn.predict(x_test)
   accuracy=metrics.accuracy_score(y_test,y_pred)
   print(f"accuracy with k={k} : {accuracy*100:.2f}%")
+
+
+from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
+# Confusion matrix
+cm = confusion_matrix(y_test, y_pred, labels=knn.classes_)
+cm_display = ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=knn.classes_)
+cm_display.plot(cmap="Blues")
+plt.title("Confusion Matrix")
+plt.show()
